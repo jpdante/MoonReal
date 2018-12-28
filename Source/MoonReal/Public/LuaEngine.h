@@ -6,6 +6,8 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "LuaScriptAsset.h"
+#include "Engine.h"
+#include "LuaUtils.h"
 #include "LuaEngine.generated.h"
 
 UCLASS()
@@ -18,7 +20,7 @@ public:
 	~ALuaEngine();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	ULuaScriptAsset* SourceScript;
+	ULuaScriptAsset *SourceScript;
 
 private:
 	lua_State *LuaState;
@@ -29,8 +31,15 @@ protected:
 
 public:
 	virtual void Tick(float DeltaTime) override;
+	static UWorld *StaticWorld;
+
+private:
+/*	void RegisterMethods();*/
 
 public:
-	static int lua_print(lua_State* L);
-	static int lua_uelog(lua_State* L);
+// 	static int lua_print(lua_State* L);
+// 	static int lua_uelog(lua_State* L);
+// 	static int lua_drawdebug(lua_State* L);
+
+	static int USL_FindActor(lua_State* L);
 };

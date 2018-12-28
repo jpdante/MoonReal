@@ -25,7 +25,8 @@ void FMoonRealEditorModule::StartupModule()
 
 void FMoonRealEditorModule::ShutdownModule()
 {
-	UThumbnailManager::Get().UnregisterCustomRenderer(ULuaScriptAsset::StaticClass());
+	// Throwing Random Memory Violations ???
+	//UThumbnailManager::Get().UnregisterCustomRenderer(ULuaScriptAsset::StaticClass());
 	FMoonRealStyle::Shutdown();
 	UnregisterAssetTools();
 }
